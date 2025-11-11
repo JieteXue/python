@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}I\PYG{k}{\PYGZbs{}usepackage}[colorlinks,
+\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}Ilinkcolor=blue,       \PYG{c}{\PYGZpc{}\PYGZpc{}修改此处为你想要的颜色}
+\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}Ianchorcolor=blue,
+\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}Icitecolor=blue,
+\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}I]\PYG{n+nb}{\PYGZob{}}hyperref\PYG{n+nb}{\PYGZcb{}}
+\end{MintedVerbatim}

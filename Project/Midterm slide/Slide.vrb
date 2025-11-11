@@ -1,0 +1,7 @@
+\frametitle{Strategy}
+The question is how to design the algorithm properly.
+  \begin{itemize}[<+- | alert@+>]
+    \item Let's enumerate all possibilities!
+    \item WTF?
+    \item If there are $n$ choices with each steps and the game ends with a large $k$ steps, then your computer will see the god with $n^k$ on his head!
+  \end{itemize}

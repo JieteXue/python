@@ -1,0 +1,210 @@
+\documentclass[10pt]{beamer} 
+
+
+
+\usetheme[progressbar=frametitle]{metropolis} 
+\usepackage{fontspec}
+\setsansfont{Georgia}      % 设置你想要的字体
+\setmainfont{Georgia}
+\usepackage{appendixnumberbeamer}
+\usepackage[english]{babel}
+\usepackage{booktabs} %书签
+\usepackage[scale=2]{ccicons} %typeset Creative Commons icons
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+\usepackage{hologo}
+
+\usepackage{amsmath, amsfonts, amssymb} %数学符号
+
+%语法高亮
+\usepackage{minted}
+\usepackage{listings}
+
+\definecolor{mlv}{RGB}{40, 137, 124}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=mlv,
+	filecolor=mlv,      
+	urlcolor=red,
+	citecolor=cyan,
+}
+
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.eps,.ps,.jpg,.bmp,.png,.svg}
+%指定可以使用以上格式图像文件
+
+\usepackage{xspace} %断行命令
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+\title{A Higher Insight \\into a Category of Games}
+\subtitle{Winning Strategy on ICG} %副标题
+\date{October 29, 2025} %今天的日期
+% \date{} %指定日期
+\author{X. Yang \& J. T. Xue \& J. H. Liu} %作者
+\institute{7th Group} %机构
+%\titlegraphic{\hfill\includegraphics[height=2.5cm]{image/academic.png}} %插入logo
+
+%在每个section 前边单独插入当前章节高亮的目录页（当然最原始的目录页你还是需要手动录入的，不要想偷懒）
+%\AtBeginSection[]
+%{
+%	\begin{frame}
+%		\frametitle{当前章节}
+%		\tableofcontents[currentsection]
+%	\end{frame}
+%}
+
+\begin{document}
+
+\maketitle %目录生成
+
+\begin{frame}{Contents}
+	%		Table of contents 目录/大纲页
+	%             自动实现对section的收集，并绘制成目录页
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents
+\end{frame}
+
+
+
+\section{Introduction about ICG}
+\begin{frame}{Introduction-What is ICG?}
+	\begin{alertblock}{Definition}
+        We call a game  \textbf{impartial combinatorial games} (ICG), if the following conditions hold:
+		\begin{itemize}
+      \item 
+          \begin{enumerate}
+      			\item It is a game with two players.
+      			\item Two players make a movement (must act) in turn.
+      			\item When someone can not move, the game ends, and we say that this player loses.
+      		\end{enumerate}
+      \item 
+          \begin{enumerate}
+      			\item A state can be reached only once.
+      			\item The game ends with finite movements.
+      			\item Both players have the same strategy to win under a same state.
+      		\end{enumerate}
+    \end{itemize}
+      \end{alertblock} 
+\end{frame}
+\begin{frame}
+  \begin{exampleblock}{Example}
+    There are initially $n$ cards on the table. A and B take turns drawing cards, each time drawing a number of cards in range of $1\sim k$. The person who draws the last card wins.
+  \end{exampleblock}
+\end{frame}
+
+
+\section{Our Work}
+\begin{frame}{Our Work}
+  \centering
+  Our work is to give a winning strategy for a particular interesting ICG.
+  \newline
+  That means we will help you win the game if possible.
+\end{frame}
+\begin{frame}{Our Work}
+  \textbf{Our Expectation}: To create an ICG that is simply packaged and is interactive for players so that they may get a glimpse of principles of this kind of games.
+
+  \textbf{Our Work Division}: J. H. Liu and X. Yang will be responsible for the game and UI. J. T. Xue will design the winning algorithm.
+\end{frame}
+\begin{frame}{Possible Difficulties}
+  \begin{itemize}[<+- | alert@+>]
+    \item No UI design experience.
+    \item Hard to formalize the problem.
+    \item Design an interesting and interactive game.
+  \end{itemize}
+\end{frame}
+\begin{frame}{Our Solutions}
+  \textbf{UI Design}: Study the pygame module, or turn to other languages to solve this problem.
+
+  \textbf{Algorithm Design}: Let J. T. Xue be more hard working and get inspiration from the similar problem.
+\end{frame}
+\begin{frame}{The Significance of Our Work}
+  \textbf{To Ourselves}
+  \begin{itemize}[<+- | alert@+>]
+    \item Familiar with the problem with concrete examples.
+    \item Gain an experience of UI design and improve our programming proficiency.
+  \end{itemize} 
+  \textbf{To Others}
+  \begin{itemize}[<+- | alert@+>]
+    \item Promote recognition of this math model.
+    \item Inspire a new pathway to tackling simple dual player games.
+    \item Promote the study of combinatorial games.
+  \end{itemize}
+  
+\end{frame}
+\begin{frame}{Future Progress}
+  \begin{itemize}[<+- | alert@+>]
+    \item Apply more intricate UI design to enhance players experience.
+    \item Develop a game with more operations.
+    \item Integrate the theorem with machine learning and AI.
+  \end{itemize}
+  
+\end{frame}
+\begin{frame}{Analysis}
+  The question is how to design the algorithm properly.
+  \begin{itemize}[<+- | alert@+>]
+    \item Let's enumerate all possibilities!
+    \item WTF?
+    \item If there are $n$ choices with each steps and the game ends with a large $k$ steps, then your computer will see the god with $n^k$ on his head!
+  \end{itemize}
+\end{frame}
+\begin{frame}{Analysis}
+  To analyze the problem systematically, we need a mathematical model.
+\end{frame}
+\begin{frame}[allowframebreaks]{Analysis}
+  Consider you are playing the game. There are some choices for you, and you need to pick one of them. It is just like there are many one-way streets in front of you. You go through the street, and then make decision again at next corner.
+
+  We abstract it as a graph. Each vertex is a state, and each edge is a move. The rule of the ICG implies that the graph should be finite, without loops, and unidirectional.
+
+  A graph $G$ is a triple $(V(G), E(G), \phi_G)$, contains a non-empty set $V(G)$ as \textbf{vertices}, set $E(G)$ as \textbf{edges}, and a \textbf{association function}:
+  \begin{equation}
+    \phi_{G}:E(G)\longrightarrow V(G)\times V(G).
+  \end{equation}
+  In a directed graph, the association function maps the elements $e\in E(G)$ to an ordered pair $(u,v)$, consisting of the two vertex, where $u$ is the starting point and $v$ is the ending point of $e$.
+
+  In particular, the graph we are studying is tree-shaped (there is a unique path between any two vertices and there are no loops). There exists a unique $r\in V(G)$, such that 
+  \begin{equation}
+    \forall (e,v)\in E(G)\times V(G),\ \phi_G (e)\neq (v,r).
+  \end{equation}
+  We call it the \textbf{root} of the graph. Similarly, we call $l\in V(G)$ the \textbf{leaf} of the graph if 
+  \begin{equation}
+   \forall (e,v)\in E(G)\times V(G),\ \phi_G (e)\neq (l,v). 
+  \end{equation}
+  We denote $L_G$ as 
+  \begin{equation}
+    L_G:=\left\{l\in V(G)\mid \forall (e,v)\in E(G)\times V(G),\ \phi_G (e)\neq(l,v)\right\}.
+  \end{equation}
+  Then, we can know that $r(G)$ is the beginning of the game, and $L_G$ contains all the possible ends of the game. 
+  
+  An important fact is that  we win if and only the opponent loses. Since the graph is certain under any state, so we want to construct a function to evaluate the state, and indicate the best move by return a special value.
+
+  The processing detail is quite complicated. If you are interested in this problem, please scan the QR code.\footnote{There are some problems in the article, we will fix them when going through the project.}
+  \begin{figure}[htp]
+    \includegraphics[height=2.5cm]{QR_code.png}
+  \end{figure}
+
+\end{frame}
+
+
+
+\section{Conclusion}
+
+\begin{frame}{Summary}
+  We aim to create simple game with winning strategies based on the ICG model. By incorporating UI and algorithm design, we aim to promote recognition of this model in strategizing for combinatorial games. We may further study UI design to cope with problems along the way. The harvest of this project maybe applied to machine learning and AI.
+ 
+
+  \begin{center}\ccbysa\end{center}
+
+\end{frame}
+
+{\setbeamercolor{palette primary}{fg=black, bg=yellow}
+\begin{frame}[standout]
+  Questions?
+\end{frame}
+}
+\begin{frame}[standout]
+  Thanks!
+  \end{frame}
+
+\end{document}

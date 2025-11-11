@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}I\PYG{k}{\PYGZbs{}usepackage}\PYG{n+nb}{\PYGZob{}}hyperref\PYG{n+nb}{\PYGZcb{}}
+\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}I\PYG{k}{\PYGZbs{}hypersetup}\PYG{n+nb}{\PYGZob{}}
+\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}I\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}Icolorlinks=true,
+\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}I\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}Ilinkcolor=blue,\PYG{c}{\PYGZpc{}\PYGZpc{}修改此处为你想要的颜色}
+\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}I\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}Ifilecolor=blue,
+\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}I\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}Iurlcolor=red,
+\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}I\PYG{n+nb}{\PYGZca{}}\PYG{n+nb}{\PYGZca{}}Icitecolor=cyan,\PYG{n+nb}{\PYGZcb{}}
+\end{MintedVerbatim}
