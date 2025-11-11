@@ -99,3 +99,5 @@ if __name__ == "__main__":
     print(judge_win(list))
     print(judge_move_global(list))
     print(acted_list(list,judge_move_global(list)[0]))
+
+print(AUTHOR+"Ni Ta Ge De")
