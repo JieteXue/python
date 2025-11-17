@@ -1,6 +1,5 @@
 '''REMAIN_BUGS: 
-2. action functions-random_move
-3. once take more than expected (I guess it is because of the moving_advise)'''
+'''
 
 
 
@@ -13,7 +12,7 @@ class Game:
         self.id = id
         self.original_initial_setting = initial_setting
         self.judge_win = judge_win # get the situation and return True (can win 100%) or False
-        self.movement_global = movement_global # get the situation and return all the possible moves (list of which can determine a move)
+        self.movement_global = movement_global # get the situation and return all the possible moves (list of which can determine a move/action)
         self.acted_situation = acted_situation # get the situation and the moving advise to return the new situation
         self.description = description
         self.dict_difficulty = {'1':"Easy", '2':"Normal", '3':"Hard", '4':"Insane"}
@@ -45,7 +44,7 @@ class Game:
             return False
     
     def moving_advise(self):
-    # 创建 situation 的副本，避免修改原始数据
+    # FUCK HERE!
         temp_situation = copy.deepcopy(self.situation)
         for i in self.movement_global(temp_situation):
             if not self.judge_win(self.acted_situation(copy.deepcopy(temp_situation), i)):

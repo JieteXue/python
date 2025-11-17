@@ -75,7 +75,7 @@ def judge_move_global(list):
 
     '''Check each point of the given list whether it can be moved,
     if it can be moved, return the index of the points. 
-    If all the points cannot be moved, return False.'''
+    If all the points cannot be moved, return [].'''
 
     moving=[]
     for i in range(len(list)):
@@ -93,7 +93,7 @@ def acted_list(list,i):
 
 
 
-#Test
+#------------------Test-------------------#
 if __name__ == "__main__":
     list=[2,3,4,1,2,2,1]
     print(judge_win(list))
