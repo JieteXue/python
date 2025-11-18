@@ -23,3 +23,6 @@
 >       * finish the function: 'acted_list'
 > 2. Game_class.py:
 >       * add game2 into test part
+> 3. game1_Take_Coins.py:
+>       * correct 'judge_win' function
+> 4. New game: game3
