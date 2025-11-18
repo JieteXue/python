@@ -4,7 +4,6 @@ VERSION= '1.0'
 
 
 
-'''Whole file waiting to be debugged.'''
 
 
 
@@ -75,7 +74,7 @@ def judge_win(list):
 
 def judge_move_local(list,i):
 
-    '''Check whether the given point can be moved.'''
+    '''Check whether the given action can be moved.'''
     '''i is exactly a list (for convenience of representing actions)
     i=[index in the list you choose, number of cards you choose, (if split, place you choose)]
     Two mode: split or take
