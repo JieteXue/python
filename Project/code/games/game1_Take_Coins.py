@@ -32,9 +32,9 @@ def pre_words():
 def random_list(n=-1):
     '''Generate a random list of coins.'''
     if n is None or type(n)!=int or n<=2:
-        list=[random.randint(1,10) for i in range(random.randint(5,10))]
+        list=[random.randint(1,6) for i in range(random.randint(5,10))]
     else:
-        list=[random.randint(1,10) for i in range(n)]
+        list=[random.randint(1,6) for i in range(n)]
     return list
 
 def initial_setting():
