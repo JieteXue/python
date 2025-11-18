@@ -20,6 +20,7 @@ The player who can not move loses.'''
 
 #------------------initial setting-------------------#
 import random
+import copy
 
 def pre_words():
     print("We are going to start the game of taking coins.")
@@ -81,7 +82,16 @@ def judge_move_global(list):
             moving.append(i)
     return moving
     
-
+def judge_foresee(list):
+    l=judge_move_global(list)
+    s=[]
+    for i in range(len(list)):
+        p=copy.copy(list)
+        if i in l:
+            s.append(judge_win(acted_list(p,i)))
+        else:
+            s.append(None)
+    return s
 #------------------action functions-------------------#
 def acted_list(list,i):
     list[i]+=1
@@ -104,6 +114,7 @@ if __name__ == "__main__":
         l=judge_move_global(list)
         print(l)
         print(judge_win(list))
+        print(judge_foresee(list))
         a=int(input())
         if a in l:
             acted_list(list,a)
