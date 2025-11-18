@@ -47,14 +47,12 @@ def judge_win(list):
 
     '''Check whether the given list is a winning list.'''
 
-    a=[1,0,1,1,0,1]
-    b=[1,1,0,1,1,0]
-    A=B=0
+    h=[1,2,4]
+    F=0
     for i in range(len(list)):
-        j=i%6
-        A+=a[j]*list[i]
-        B+=b[j]*list[i]
-    if (A%2)^2+(B%2)^2==0:
+        F+=(list[i])*h[i]
+        h.append(h[i]+h[i+2])
+    if F%2==0:
         return False
     else:
         return True
@@ -100,17 +98,17 @@ if __name__ == "__main__":
     print(judge_move_global(list))
     print(acted_list(list,judge_move_global(list)[0]))
 
-list=initial_setting()
-while judge_move_global(list)!=[]:
-    print(list)
-    l=judge_move_global(list)
-    print(l)
-    print(judge_win(list))
-    a=int(input())
-    if a in l:
-        acted_list(list,a)
+    list=initial_setting()
+    while judge_move_global(list)!=[]:
+        print(list)
+        l=judge_move_global(list)
+        print(l)
+        print(judge_win(list))
+        a=int(input())
+        if a in l:
+            acted_list(list,a)
+        else:
+            continue
     else:
-        continue
-else:
-    print(list)
-    print('Game is over')
+        print(list)
+        print('Game is over')
