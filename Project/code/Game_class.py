@@ -77,18 +77,35 @@ class Game:
 # Test
 if __name__ == "__main__":
 
-    import games.game1_Take_Coins as game_1
-    game1=Game(1,"Take Coins", game_1.initial_setting, game_1.judge_win, game_1.judge_move_global, game_1.acted_list, game_1.description)
+    n=int(input("Please choose a game:\n 1. Take Coins\n 2. Take and Split Cards\n "))
 
-    game1.initial_setting()
-    print(game1.difficulty,game1.situation)
-    print(game1.movement_global(game1.situation))
-    print(game1.judge_win(game1.situation))
-    if game1.judge_end():
-        pass
-    else:
-        game1.random_move()
-        print(game1.situation)
+    if n == 1:
+        import games.game1_Take_Coins as game_1
+        game1=Game(1,"Take Coins", game_1.initial_setting, game_1.judge_win, game_1.judge_move_global, game_1.acted_list, game_1.description)
+
+        game1.initial_setting()
+        print(game1.difficulty,game1.situation)
+        print(game1.movement_global(game1.situation))
+        print(game1.judge_win(game1.situation))
+        if game1.judge_end():
+            pass
+        else:
+            game1.random_move()
+            print(game1.situation)
+
+    if n == 2:
+        import games.game2_Take_and_Split_Cards as game_2
+        game2=Game(2,"Take and Split Cards", game_2.initial_setting, game_2.judge_win, game_2.judge_move_global, game_2.acted_list, game_2.description)
+
+        game2.initial_setting()
+        print(game2.difficulty,game2.situation)
+        print(game2.movement_global(game2.situation))
+        print(game2.judge_win(game2.situation))
+        if game2.judge_end():
+            pass
+        else:
+            game2.random_move()
+            print(game2.situation)
 
 
         

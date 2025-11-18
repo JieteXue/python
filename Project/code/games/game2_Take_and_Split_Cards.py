@@ -1,5 +1,5 @@
 AUTHOR= 'Jiete Xue'
-DATE= '2022/11/14'
+DATE= '2025/11/18'
 VERSION= '1.0'
 
 
@@ -73,18 +73,22 @@ def judge_win(list):
     else:
         return True
 
-def judge_move_local(list,i,num):
+def judge_move_local(list,i):
 
     '''Check whether the given point can be moved.'''
-    '''m is exactly a list (for convenience of splitting part)'''
+    '''i is exactly a list (for convenience of representing actions)
+    i=[index in the list you choose, number of cards you choose, (if split, place you choose)]
+    Two mode: split or take
+    (1) i[0]==0: split, i[1]=rest number of cards at the place you choose, i[2]=place you choose
+    (2) i[0]!=0: take, i[1]=number of cards you choose'''
 
-    if i==0:
-        if list[num[1]]<=num[0] or num[0]<=0:
+    if i[0]==0:
+        if list[i[2]]<=i[1] or i[2]<=0:
             return False
         else:
             return True
     else:
-        if list[i]<num[0] or num[0]>list[0] or num[0]<1:
+        if list[i[0]]<i[1] or i[1]>list[0] or i[1]<1:
             return False
         else:
             return True
@@ -99,34 +103,35 @@ def judge_move_global(list):
     # Take
     for i in range(1,len(list)):
         for num in range(1,list[0]+1):
-            if judge_move_local(list,i,[num]):
-                moving.append([i,[num]])
+            if judge_move_local(list,[i,num]):
+                moving.append([i,num])
 
     # Split
     for i in range(1,len(list)):
         if list[i]>1:
-            for j in range(1,list[0]+1):
-                if judge_move_local(list,i,[1,j]):
-                    moving.append([i,[1,j]])
-            moving.append([0,[list[i],i]])
+            for j in range(1,list[i]):
+                if judge_move_local(list,[0,j,i]):
+                    moving.append([0,j,i])
     return moving
 
 
 
 
 #------------------action functions-------------------#
-def acted_list(list,i,m):
+def acted_list(list,i):
 
     '''Return the list after one move.
+        i=[index in the list you choose, number of cards you choose, (if split, place you choose)]
         Two mode: split or take
-        (1) i==0: split, m=[rest number of cards at the place you choose, place you choose]
-        (2) i!=0: take, m=[number of cards you choose]'''
+        (1) i[0]==0: split, i[1]=rest number of cards at the place you choose, i[2]=place you choose
+        (2) i[0]!=0: take, i[1]=number of cards you choose'''
 
-    if i==0:
-        list.append(list[m[1]]-m[0])
-        list[m[1]]=m[0]
+    if i[0]==0:
+        list.append(list[i[2]]-i[1])
+        list[i[2]]=i[1]
     else:
-        list[i]-=m[0]
+        list[i[0]]-=i[1]
+    return list
     
 
     
@@ -155,7 +160,7 @@ if __name__ == "__main__":
 
     #acted list part
     list=[2,3,4,1,2,2,1]
-    print(acted_list(list,judge_move_global(list)[0]))
+    print(acted_list(list,[0,2,1]))
 
 
 
