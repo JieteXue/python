@@ -45,81 +45,91 @@ def initial_setting():
 
 #------------------judge functions-------------------#
 def judge_win(list):
+'''O(2^n), only for short lists'''
+@lru_cache(maxsize=None)
+def _judge_win_internal(state):
+    """Internal function, accept tuple"""
+    n = len(state)
 
     '''Check whether the given list is a winning list.'''
+    for i in range(1, n - 1):
+        if state[i - 1] >= 1 and state[i + 1] >= 1:
+            has_legal_move = True
+            new_state = list(state)
+            new_state[i - 1] -= 1
+            new_state[i] += 1
 
-    h=[1,2,4]
-    F=0
-    for i in range(len(list)):
-        F+=(list[i])*h[i]
-        h.append(h[i]+h[i+2])
-    if F%2==0:
-        return False
-    else:
-        return True
+            if new_state[i - 1] >= 0 and new_state[i + 1] >= 0:
 
-def judge_move_local(list,i):
+                if not _judge_win_internal(tuple(new_state)):
+                    return True 
+    return False
+
+def judge_win(lst):
+    return _judge_win_internal(tuple(lst))
+
+def judge_move_local(lst,i):
 
     '''Check whether the given point can be moved.'''
 
-    if i==0 or i==len(list)-1:
+    if i==0 or i==len(lst)-1:
         return False
     else:
-        if list[i-1]*list[i+1]==0:
+        if lst[i-1]*lst[i+1]==0:
             return False
         else:
             return True
 
-def judge_move_global(list):
+def judge_move_global(lst):
 
     '''Check each point of the given list whether it can be moved,
     if it can be moved, return the index of the points. 
     If all the points cannot be moved, return [].'''
 
     moving=[]
-    for i in range(len(list)):
-        if judge_move_local(list,i):
+    for i in range(len(lst)):
+        if judge_move_local(lst,i):
             moving.append(i)
     return moving
     
-def judge_foresee(list):
-    l=judge_move_global(list)
+def judge_foresee(lst):
+    l=judge_move_global(lst)
     s=[]
-    for i in range(len(list)):
-        p=copy.copy(list)
+    for i in range(len(lst)):
+        p=copy.copy(lst)
         if i in l:
             s.append(judge_win(acted_list(p,i)))
         else:
             s.append(None)
     return s
 #------------------action functions-------------------#
-def acted_list(list,i):
-    list[i]+=1
-    list[i-1]-=1
-    list[i+1]-=1
-    return list
+def acted_list(lst,i):
+    lst[i]+=1
+    lst[i-1]-=1
+    lst[i+1]-=1
+    return lst
 
 
 
 #------------------Test-------------------#
 if __name__ == "__main__":
-    list=[2,3,4,1,2,2,1]
-    print(judge_win(list))
-    print(judge_move_global(list))
-    print(acted_list(list,judge_move_global(list)[0]))
+    lst=[2,3,4,1,2,2,1]
+    print(judge_win(lst))
+    print(judge_move_global(lst))
+    print(acted_list(lst,judge_move_global(lst)[0]))
 
-    list=initial_setting()
-    while judge_move_global(list)!=[]:
-        print(list)
-        l=judge_move_global(list)
+    lst=initial_setting()
+    while judge_move_global(lst)!=[]:
+        print(lst)
+        l=judge_move_global(lst)
         print(l)
-        print(judge_win(list))
-        print(judge_foresee(list))
+        print(judge_win(lst))
+        print(judge_foresee(lst))
         a=int(input())
         if a in l:
-            acted_list(list,a)
+            acted_list(lst,a)
         else:
             continue
     else:
-        print(list)
+        print(lst)
         print('Game is over')
