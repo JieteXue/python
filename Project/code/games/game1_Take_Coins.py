@@ -31,9 +31,9 @@ def pre_words():
 def random_list(n=-1):
     '''Generate a random list of coins.'''
     if n is None or type(n)!=int or n<=2:
-        list=[random.randint(0,10) for i in range(random.randint(5,10))]
+        list=[random.randint(1,10) for i in range(random.randint(5,10))]
     else:
-        list=[random.randint(0,10) for i in range(n)]
+        list=[random.randint(1,10) for i in range(n)]
     return list
 
 def initial_setting():
@@ -99,3 +99,18 @@ if __name__ == "__main__":
     print(judge_win(list))
     print(judge_move_global(list))
     print(acted_list(list,judge_move_global(list)[0]))
+
+list=initial_setting()
+while judge_move_global(list)!=[]:
+    print(list)
+    l=judge_move_global(list)
+    print(l)
+    print(judge_win(list))
+    a=int(input())
+    if a in l:
+        acted_list(list,a)
+    else:
+        continue
+else:
+    print(list)
+    print('Game is over')
