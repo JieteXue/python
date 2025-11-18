@@ -44,20 +44,23 @@ def initial_setting():
 
 
 #------------------judge functions-------------------#
-def judge_win(list):
+from functools import lru_cache
 '''O(2^n), only for short lists'''
 @lru_cache(maxsize=None)
 def _judge_win_internal(state):
     """Internal function, accept tuple"""
     n = len(state)
+    
 
-    '''Check whether the given list is a winning list.'''
+    has_legal_move = False
     for i in range(1, n - 1):
         if state[i - 1] >= 1 and state[i + 1] >= 1:
             has_legal_move = True
             new_state = list(state)
             new_state[i - 1] -= 1
             new_state[i] += 1
+            new_state[i + 1] -= 1
+            
 
             if new_state[i - 1] >= 0 and new_state[i + 1] >= 0:
 
