@@ -77,7 +77,7 @@ class Game:
 # Test
 if __name__ == "__main__":
 
-    n=int(input("Please choose a game:\n 1. Take Coins\n 2. Take and Split Cards\n "))
+    n=int(input("Please choose a game:\n 1. Take Coins\n 2. Take and Split Cards\n 3. Cards Nim\n 4. Dawson's Kayles\n"))
 
     if n == 1:
         import games.game1_Take_Coins as game_1
@@ -106,6 +106,34 @@ if __name__ == "__main__":
         else:
             game2.random_move()
             print(game2.situation)
+
+    if n == 3:
+        import games.game3_Nim as game_3
+        game3=Game(3,"Nim", game_3.initial_setting, game_3.judge_win, game_3.judge_move_global, game_3.acted_list, game_3.description)
+
+        game3.initial_setting()
+        print(game3.difficulty,game3.situation)
+        print(game3.movement_global(game3.situation))
+        print(game3.judge_win(game3.situation))
+        if game3.judge_end():
+            pass
+        else:
+            game3.random_move()
+            print(game3.situation)
+    
+    if n == 4:
+        import games.game4_Dawson_Kayles as game_4
+        game4=Game(4,"Dawson's Kayles", game_4.initial_setting, game_4.judge_win, game_4.judge_move_global, game_4.acted_list, game_4.description)
+
+        game4.initial_setting()
+        print(game4.difficulty,game4.situation)
+        print(game4.movement_global(game4.situation))
+        print(game4.judge_win(game4.situation))
+        if game4.judge_end():
+            pass
+        else:
+            game4.random_move()
+            print(game4.situation)
 
 
         
