@@ -7,9 +7,10 @@
     * function: 'acted_list' waiting to be completed.
 - [ ] Type check function: to check whether the parameter get in is of the correct type and range.
 - [x] More games: NIM game (simple version)
-- [ ] Find some non-trivial initial list of game 1.
+- [x] Find some non-trivial initial list of game 1.
 - [ ] Game 3 test.
 - [ ] Game 4 test.
+- [ ] Game 5 test.
 
 ## Progress
 
@@ -35,3 +36,8 @@
 > 2. Game_class.py:
 >       * add new games into test part
 > 3. Going to start a halfway report.
+
+
+
+#### Nov 25, 2025
+> 1. New game: game 5: Subtract Factor

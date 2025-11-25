@@ -28,15 +28,15 @@ def pre_words():
         if int(n)>5 and int(k)>1:
             return [int(k),int(n)]
 
-def initial_list(list=None):
+def initial_list(lst=None):
 
     '''We use a list to record the number of cards in each bunch.
 
     ATTENTION: the first element is the max number of cards you can take.'''
 
-    if list is None:
-        list=[random.randint(2,10),random.randint(6,20)]
-    return list
+    if lst is None:
+        lst=[random.randint(2,10),random.randint(6,20)]
+    return lst
 
 def initial_setting():
     return(initial_list(pre_words()))
@@ -61,18 +61,18 @@ def SG(n,k):
     else:
         return n
 
-def judge_win(list):
+def judge_win(lst):
 
     '''Check whether the given list is a winning list.'''
     sg=0
-    for i in range(1,len(list)):
-        sg^=SG(list[i],list[0])
+    for i in range(1,len(lst)):
+        sg^=SG(list[i],lst[0])
     if sg==0:
         return False
     else:
         return True
 
-def judge_move_local(list,i):
+def judge_move_local(lst,i):
 
     '''Check whether the given action can be moved.'''
     '''i is exactly a list (for convenience of representing actions)
@@ -82,17 +82,17 @@ def judge_move_local(list,i):
     (2) i[0]!=0: take, i[1]=number of cards you choose'''
 
     if i[0]==0:
-        if list[i[2]]<=i[1] or i[2]<=0:
+        if lst[i[2]]<=i[1] or i[2]<=0:
             return False
         else:
             return True
     else:
-        if list[i[0]]<i[1] or i[1]>list[0] or i[1]<1:
+        if lst[i[0]]<i[1] or i[1]>lst[0] or i[1]<1:
             return False
         else:
             return True
 
-def judge_move_global(list):
+def judge_move_global(lst):
 
     '''Check each point of the given list whether it can be moved,
     if it can be moved, return the index of the points. 
@@ -100,16 +100,16 @@ def judge_move_global(list):
 
     moving=[]
     # Take
-    for i in range(1,len(list)):
-        for num in range(1,list[0]+1):
-            if judge_move_local(list,[i,num]):
+    for i in range(1,len(lst)):
+        for num in range(1,lst[0]+1):
+            if judge_move_local(lst,[i,num]):
                 moving.append([i,num])
 
     # Split
-    for i in range(1,len(list)):
-        if list[i]>1:
-            for j in range(1,list[i]):
-                if judge_move_local(list,[0,j,i]):
+    for i in range(1,len(lst)):
+        if lst[i]>1:
+            for j in range(1,lst[i]):
+                if judge_move_local(lst,[0,j,i]):
                     moving.append([0,j,i])
     return moving
 
@@ -117,7 +117,7 @@ def judge_move_global(list):
 
 
 #------------------action functions-------------------#
-def acted_list(list,i):
+def acted_list(lst,i):
 
     '''Return the list after one move.
         i=[index in the list you choose, number of cards you choose, (if split, place you choose)]
@@ -126,11 +126,11 @@ def acted_list(list,i):
         (2) i[0]!=0: take, i[1]=number of cards you choose'''
 
     if i[0]==0:
-        list.append(list[i[2]]-i[1])
-        list[i[2]]=i[1]
+        lst.append(lst[i[2]]-i[1])
+        lst[i[2]]=i[1]
     else:
-        list[i[0]]-=i[1]
-    return list
+        lst[i[0]]-=i[1]
+    return lst
     
 
     

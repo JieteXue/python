@@ -20,10 +20,10 @@ def pre_words():
 def random_list(n=-1):
     '''Generate a (random) list of bottles.'''
     if n is None or type(n)!=int or n<=1:
-        list=[1 for i in range(random.randint(5,10))]
+        lst=[1 for i in range(random.randint(5,10))]
     else:
-        list=[1 for i in range(n)]
-    return list
+        lst=[1 for i in range(n)]
+    return lst
 
 def initial_setting():
     return(random_list(pre_words()))
@@ -50,13 +50,13 @@ def SG(n):
         equivalent_n = (n - start_period) % period + (start_period - period)
         return base_grundy[equivalent_n]
     
-def judge_win(list):
+def judge_win(lst):
 
     '''Check whether the given list is a winning list.'''
 
     splits=[]
     count=0
-    for i in range(len(list)):
+    for i in range(len(lst)):
         if list[i]==1:
             count+=1
         else:
@@ -78,22 +78,22 @@ def judge_move_local(list,i):
 
     return i>=0 and i<len(list)-1 and list[i]==1 and list[i+1]==1
 
-def judge_move_global(list):
+def judge_move_global(lst):
 
     '''Return a list of possible actions'''
 
     moving=[]
-    for i in range(len(list)-1):
-        if judge_move_local(list,i):
+    for i in range(len(lst)-1):
+        if judge_move_local(lst,i):
                 moving.append(i)
     return moving
     
 
 #------------------action functions-------------------#
-def acted_list(list,i):
-    list[i]=0
-    list[i+1]=0
-    return list
+def acted_list(lst,i):
+    lst[i]=0
+    lst[i+1]=0
+    return lst
 
 
 
@@ -103,7 +103,10 @@ def acted_list(list,i):
 if __name__ == "__main__":
     import ast
     lst=initial_setting()
+    step=0
     while judge_move_global(lst)!=[]:
+        step+=1
+        print('------------------step {}-------------------'.format(step))
         print(lst)
         l=judge_move_global(lst)
         print(l)
@@ -112,7 +115,8 @@ if __name__ == "__main__":
         if a in l:
             acted_list(lst,a)
         else:
+            step-=1
             continue
     else:
+        print('------------------Game is over-------------------')
         print(lst)
-        print('Game is over')
