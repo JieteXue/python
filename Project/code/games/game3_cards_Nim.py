@@ -80,7 +80,10 @@ def acted_list(list,i):
 if __name__ == "__main__":
     import ast
     lis=initial_setting()
+    step=0
     while judge_move_global(lis)!=[]:
+        step+=1
+        print('------------------step {}-------------------'.format(step))
         print(lis)
         l=judge_move_global(lis)
         print(l)
@@ -90,7 +93,8 @@ if __name__ == "__main__":
         if a in l:
             acted_list(lis,a)
         else:
+            step-=1
             continue
     else:
+        print('------------------Game is over-------------------')
         print(lis)
-        print('Game is over')

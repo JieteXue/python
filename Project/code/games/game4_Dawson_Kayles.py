@@ -103,7 +103,10 @@ def acted_list(list,i):
 if __name__ == "__main__":
     import ast
     lst=initial_setting()
+    step=0
     while judge_move_global(lst)!=[]:
+        step+=1
+        print('------------------step {}-------------------'.format(step))
         print(lst)
         l=judge_move_global(lst)
         print(l)
@@ -112,7 +115,8 @@ if __name__ == "__main__":
         if a in l:
             acted_list(lst,a)
         else:
+            step-=1
             continue
     else:
+        print('------------------Game is over-------------------')
         print(lst)
-        print('Game is over')

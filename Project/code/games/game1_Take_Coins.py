@@ -26,14 +26,14 @@ import copy
 def pre_words():
     print("We are going to start the game of taking coins.")
     print("")
-    n=input("Enter the number of positions to put coins (larger than 2, or enter directly for random setting): ")
+    n=input("Enter the number of positions to put coins (larger than 8, or enter directly for random setting): ")
     if n.isdigit(): 
         return int(n)
 
 def random_list(n=-1):
     '''Generate a random list of coins.'''
     if n is None or type(n)!=int or n<=2:
-        list=[random.randint(1,3) for i in range(random.randint(5,10))]
+        list=[random.randint(1,3) for i in range(random.randint(8,14))]
     else:
         list=[random.randint(1,3) for i in range(n)]
     return list
@@ -121,19 +121,35 @@ if __name__ == "__main__":
     print(judge_win(lst))
     print(judge_move_global(lst))
     print(acted_list(lst,judge_move_global(lst)[0]))
-
     lst=initial_setting()
+    step=0
     while judge_move_global(lst)!=[]:
+        step+=1
+        print('------------------step {}-------------------'.format(step))
         print(lst)
         l=judge_move_global(lst)
         print(l)
         print(judge_win(lst))
-        print(judge_foresee(lst))
+        foresee=judge_foresee(lst)
+        print(foresee)
+        for i in range(len(lst)):
+            if i<=9:
+                if foresee[i]==False:
+                    print('  {}    '.format(i),end='')
+                else:
+                    print('  {}   '.format(i),end='')
+            else:
+                if foresee[i]==False:
+                    print(' {}    '.format(i),end='')
+                else:
+                    print(' {}   '.format(i),end='')
+        print('\n')
         a=int(input())
         if a in l:
             acted_list(lst,a)
         else:
+            step-=1
             continue
     else:
+        print('------------------Game is over-------------------')
         print(lst)
-        print('Game is over')
