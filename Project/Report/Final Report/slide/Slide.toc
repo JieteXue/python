@@ -1,4 +1,8 @@
 \babel@toc {english}{}\relax 
-\beamer@sectionintoc {1}{Introduction about ICG}{3}{0}{1}
-\beamer@sectionintoc {2}{Our Work}{6}{0}{2}
-\beamer@sectionintoc {3}{Conclusion}{28}{0}{3}
+\beamer@sectionintoc {1}{Project Overview}{3}{0}{1}
+\beamer@sectionintoc {2}{Technical Challenges}{5}{0}{2}
+\beamer@sectionintoc {3}{Our Solutions}{10}{0}{3}
+\beamer@sectionintoc {4}{Progress \& Results}{13}{0}{4}
+\beamer@sectionintoc {5}{Significance \& Applications}{16}{0}{5}
+\beamer@sectionintoc {6}{Future Directions}{18}{0}{6}
+\beamer@sectionintoc {7}{Conclusion}{20}{0}{7}
