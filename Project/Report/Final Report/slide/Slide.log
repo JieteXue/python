@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.28)  29 DEC 2025 21:30
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.12.28)  30 DEC 2025 15:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1124,6 +1124,27 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ] [14
 
 ]
+File: figures/main_menu.png Graphic file (type bmp)
+<figures/main_menu.png>
+File: figures/help_guide.png Graphic file (type bmp)
+<figures/help_guide.png>
+ [15
+
+]
+File: figures/game_example_1.png Graphic file (type bmp)
+<figures/game_example_1.png>
+File: figures/game_example_2.png Graphic file (type bmp)
+<figures/game_example_2.png>
+ [16
+
+]
+File: figures/sidebar.png Graphic file (type bmp)
+<figures/sidebar.png>
+File: figures/settings.png Graphic file (type bmp)
+<figures/settings.png>
+ [17
+
+]
 
 Package fontspec Info: 
 (fontspec)             Font family 'Georgia(1)' created for font 'Georgia'
@@ -1149,13 +1170,7 @@ Package fontspec Info:
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
 (fontspec)             <->"Georgia/BI/OT:script=latn;language=dflt;+tnum;+smcp;mapping=tex-text;"
 
- [15
-
-] [16
-
-] [17
-
-] [18
+ [18
 
 ] [19
 
@@ -1167,6 +1182,12 @@ Package fontspec Info:
 
 ] [23
 
+] [24
+
+] [25
+
+] [26
+
 ]
 \tf@nav=\write7
 \openout7 = `Slide.nav'.
@@ -1177,7 +1198,7 @@ Package fontspec Info:
 \tf@snm=\write9
 \openout9 = `Slide.snm'.
 
-runsystem(latexminted cleantemp  --timestamp 20251229213038 6160A53ECE50CE6D4F5EF4452549835E)...executed safely (allowed).
+runsystem(latexminted cleantemp  --timestamp 20251230154834 6160A53ECE50CE6D4F5EF4452549835E)...executed safely (allowed).
 
  (./Slide.aux)
  ***********
@@ -1188,12 +1209,12 @@ Package rerunfilecheck Info: File `Slide.out' has not changed.
 (rerunfilecheck)             Checksum: F8DA8C7E0EFDA43949E95F6218F118BF;936.
  ) 
 Here is how much of TeX's memory you used:
- 44563 strings out of 468179
- 1100490 string characters out of 5436883
+ 44625 strings out of 468179
+ 1101996 string characters out of 5436883
  1735237 words of memory out of 5000000
- 72454 multiletter control sequences out of 15000+600000
+ 72508 multiletter control sequences out of 15000+600000
  631149 words of font info for 110 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  128i,21n,142p,1892b,875s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Slide.pdf (23 pages).
+Output written on Slide.pdf (26 pages).
