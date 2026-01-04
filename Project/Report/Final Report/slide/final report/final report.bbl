@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+
+\bibitem{albert2007lessons}
+Michael~H. Albert, Richard~J. Nowakowski, and David Wolfe.
+\newblock {\em Lessons in Play: An Introduction to Combinatorial Game Theory}.
+\newblock A K Peters, Wellesley, Mass., 2007.
+\newblock A widely used introductory textbook that covers basic techniques, impartial games, and the algebra of games[citation:2][citation:5].
+
+\bibitem{berlekamp2001winning}
+Elwyn~R. Berlekamp, John~H. Conway, and Richard~K. Guy.
+\newblock {\em Winning Ways for Your Mathematical Plays}, volume 1--4.
+\newblock A K Peters, Wellesley, Mass., 2nd edition, 2001--2004.
+\newblock The seminal and encyclopedic work that founded modern combinatorial game theory. It is known for its breadth and engaging style[citation:10].
+
+\bibitem{siegel2013combinatorial}
+Aaron~N. Siegel.
+\newblock {\em Combinatorial Game Theory}.
+\newblock American Mathematical Society, Providence, Rhode Island, 2013.
+\newblock A comprehensive and modern graduate-level text that covers both classical theory and recent advances like mis\`{e}re quotients[citation:3][citation:8][citation:10].
+
+\end{thebibliography}

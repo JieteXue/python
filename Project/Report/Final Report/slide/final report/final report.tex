@@ -1,0 +1,108 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\geometry{a4paper, margin=1cm}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+% ========== BibTeX 设置 ==========
+\usepackage{cite}  % 支持 \cite 命令和 \bibliographystyle
+
+% =================================
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\titlespacing*{\section}{0pt}{6pt}{6pt}
+\titlespacing*{\subsection}{0pt}{6pt}{6pt}
+
+\title{\textbf{ICGs Platform: Final Report}}
+\author{Group 7: Xuan Yang, Jiete Xue, Jiahao Liu}
+\date{January 2026}
+
+\begin{document}
+\maketitle
+
+\section*{Project Overview}
+We developed an interactive platform for playing and analyzing \textbf{Impartial Combinatorial Games (ICGs)} with automated winning strategy computation. The platform integrates multiple classic ICG games (Nim, Kayles, and two original games) with a graphical user interface, real-time strategy analysis, and an extensible algorithmic framework.
+
+This project bridges theoretical combinatorial game theory with practical implementation, offering educational, research, and AI-development applications. Core theoretical foundations include the Sprague-Grundy theorem and SG function \cite{albert2007lessons}.
+
+\section*{Background and Challenges}
+ICG theory is well-established \cite{berlekamp2001winning}, but practical implementation faces significant challenges:
+
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item \textbf{State space explosion}: Exponential growth of game states with linear increases in game size.
+    \item \textbf{Real-time requirements}: Need for sub-second response in interactive modes.
+    \item \textbf{General framework design}: Accommodating diverse and complex game rules.
+    \item \textbf{UI/UX design}: Creating an intuitive interface without prior experience.
+\end{itemize}
+
+\section*{Our Solution: Framework and Algorithm}
+We adopted a \textbf{three-tier modular architecture}:
+\begin{enumerate}[leftmargin=*,noitemsep]
+    \item \textbf{Game Logic Layer}: Implements rules and state transitions.
+    \item \textbf{AI Engine Layer}: Optimized recursion with memoization for strategy analysis \cite{siegel2013combinatorial}.
+    \item \textbf{User Interface Layer}: PyGame-based interactive graphical interface.
+\end{enumerate}
+
+\subsection*{Core Algorithm}
+We implemented a \textbf{recursive depth-first search} with memoization to classify positions as winning (N) or losing (P). The win function is defined as:
+
+\[
+\text{win}(S) = 
+\begin{cases} 
+\text{False} & \text{if } S \text{ is terminal} \\ 
+-\bigwedge_{S' \in \text{moves}(S)} \text{ win}(S') & \text{otherwise}
+\end{cases}
+\]
+
+Key optimizations include:
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item \textbf{State hashing}: Efficient immutable state representation.
+    \item \textbf{Memoization}: Caching computed results to avoid redundancy.
+    \item \textbf{Early termination}: Pruning search space when possible.
+\end{itemize}
+
+\section*{Results and Contributions}
+\subsection*{Completed Work}
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item Implemented four ICG games: \textbf{Nim}, \textbf{Kayles}, and two original games.
+    \item Developed a fully functional PyGame UI with three modes: PvP, PvC, and strategy analysis.
+    \item Achieved real-time response (<1 second) for medium-complexity states.
+\end{itemize}
+
+\subsection*{Team Contributions}
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item \textbf{Jiete Xue}: Core algorithm design, game logic (Nim, Kayles), system architecture.
+    \item \textbf{Jiahao Liu}: Test case design, performance testing, state optimization, documentation.
+    \item \textbf{Xuan Yang}: UI implementation, interaction flows, integration testing.
+\end{itemize}
+
+\subsection*{Platform Features}
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item Interactive game selection menu and help guide.
+    \item Real-time move suggestions and position analysis.
+    \item Customizable settings (sound, hints, etc.).
+    \item Modular design for easy addition of new games.
+\end{itemize}
+
+\section*{AI Usage Statement}
+\begin{itemize}[leftmargin=*,noitemsep]
+    \item \textbf{Core algorithm}: 100\% self made.
+    \item \textbf{Architecture}: 70\% self made.
+    \item \textbf{UI}: 95\% AI generated.
+\end{itemize}
+
+\section*{Conclusion}
+We successfully built a functional and extensible ICG platform that demonstrates the practical application of combinatorial game theory. The system provides an educational tool for learning game strategies, a research platform for algorithm testing, and a foundation for future AI integration.
+
+
+
+% ========== BibTeX 参考文献部分 ==========
+% 选择参考文献样式（plain, unsrt, alpha, abbrv等）
+\bibliographystyle{plain}  % 可根据需要改为 unsrt, alpha 等
+\bibliography{refs}        % 引用 refs.bib 文件
+% =======================================
+
+\end{document}
